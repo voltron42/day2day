@@ -1,0 +1,33 @@
+<day2day>
+  <projects>
+    <project id="" name=""/>
+  </projects>
+  <stages>
+    <stage project-id="" order="" name="" threshold=""/>
+  </stages>
+  <tasks>
+    <task id="" name="" effort="" date="" stage-id="">
+      <description></description>
+      <tags>
+        <tag></tag>
+      </tags>
+      <notes>
+        <note></note>
+      </notes>
+      <alerts>
+        <alert time-unit="" time-value=""/>
+      </alerts>
+      <triggers>
+        <trigger prototype-task-id=""/>
+      </triggers>
+    </task>
+  </tasks>
+  <recurrances>
+    <recur occurance-unit="" occurance-values="">
+      <trigger prototype-task-id=""/>
+    </recur>
+  </recurrances>
+  <blockers>
+    <block project-id="" blocker-task-id="" blocked-task-id=""/>
+  </blockers>
+</day2day>
