@@ -8,27 +8,33 @@
       html, body, pre, code, kbd, samp {
           font-family: "Press Start 2P";
       }
-    </style>
-    <script>
-      function dropdown(e){
-        console.log("click dropdown");
-        e.preventDefault()
-        let classes = document.getElementById("dropdown").classList;
-        classes.toggle("show",!classes.contains("show"));
+      option {
+        padding: 25px 0;
       }
-    </script>
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-dark">
-      <a class="navbar-brand text-light" href="#" onclick="dropdown(event)">Project 1</a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown">
-        <div class="showcase">
-          <div class="nes-container is-rounded is-dark">
-            <a class="dropdown-item text-white" href="#">Project 2</a>
-            <a class="dropdown-item text-white" href="#">Project 3</a>
-            <a class="dropdown-item text-white" href="#">Project 4</a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="nes-select is-dark">
+            <select class="" onclick="selectProject()">
+              <option value="1">Project 1</option>
+              <option value="2">Project 2</option>
+              <option value="3">Project 3</option>
+              <option value="4">Project 4</option>
+            </select>
           </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#" class="nes-btn is-dark">Projects</a></li>
+          </ul>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="nes-btn">Create Task</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="nes-btn">Logout</a></li>
+        </ul>
       </div>
     </nav>
     <div class="container-fluid">
@@ -38,7 +44,7 @@
           <div class="row">
             <div class="col">
               <div class="showcase">
-                <div class="nes-container with-title">
+                <div class="nes-container with-title text-center">
                   <h2 class="title">TODO</h2>
                   <div class="nes-btn is-error">Overdue Task</div>
                   <div class="nes-btn is-success">Ready Task</div>
@@ -48,7 +54,7 @@
             </div>
             <div class="col">
               <div class="showcase">
-                <div class="nes-container with-title">
+                <div class="nes-container with-title text-center">
                   <h2 class="title">In Progress</h2>
                   <div class="nes-btn is-success">Task In Progress</div>
                   <div class="nes-btn is-error">Overdue Task In Progress</div>
@@ -57,7 +63,7 @@
             </div>
             <div class="col">
               <div class="showcase">
-                <div class="nes-container with-title">
+                <div class="nes-container with-title text-center">
                   <h2 class="title">Complete</h2>
                   <div class="nes-btn is-primary">Completed Task</div>
                   <div class="nes-btn bg-secondary text-white">Abandoned Task</div>
@@ -68,5 +74,13 @@
         </div>
       </div>
     </div>
+    <dialog id="projects">
+    </dialog>
+    <dialog id="project">
+    </dialog>
+    <dialog id="newTask">
+    </dialog>
+    <dialog id="editTask">
+    </dialog>
   </body>
 </html>
