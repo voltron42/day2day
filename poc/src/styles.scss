@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~nes.css/css/nes.css';
+
+html, body, pre, code, kbd, samp {
+  font-family: "Press Start 2P";
+}
+
+option {
+  padding: 25px 0;
+}
+
+nes-btn {
+  display: block;
+}

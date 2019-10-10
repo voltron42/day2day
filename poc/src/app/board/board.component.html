@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-white bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="nes-select is-dark">
+        <ng-container *ngIf="projectNames">
+          <select (click)="selectProject($event)">
+            <option *ngFor="let project of projectNames; index as i" value="{{i}}">{{project}}</option>
+          </select>
+        </ng-container>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#" class="nes-btn is-dark" (click)="showProjectList($event)">Projects</a></li>
+      </ul>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <form [formGroup]="newTaskForm">
+          <dialog-wrapper triggerBtnName="Create Task" [dialogConfirm]="newTaskCreator()">
+            <p class="title">New Task</p>
+            <div class="nes-field is-inline">
+              <label for="newTaskName">Name</label>
+              <input type="text" id="newTaskName" formControlName="newTaskName" class="nes-input"/>
+            </div>
+            <div class="nes-field is-inline">
+              <label for="newTaskDate">Date</label>
+              <input type="date" id="newTaskDate" formControlName="newTaskDate" class="nes-input"/>
+            </div>
+            <div class="nes-field is-inline">
+              <label for="newTaskBlocker">Blocker</label>
+              <select id="newTaskBlocker" formControlName="newTaskBlocker" class="nes-input">
+                <option value="">Is there a dependent task?</option>
+                <ng-container *ngFor="let stage of selectedProject.stages; index as s">
+                  <ng-container *ngIf="s < selectedProject.stages.length - 1">
+                    <ng-container *ngFor="let task of stage.tasks; index as t">
+                      <option value="{{s}},{{t}}">{{stage.name}}:{{task.name}}</option>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </select>
+            </div>
+          </dialog-wrapper>
+        </form>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class="nes-btn" (click)="logout($event)">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <p></p>
+  <div class="row" *ngIf="selectedProject">
+    <div class="col-12">
+      <div class="row" cdkDropListGroup>
+        <div class="col" *ngFor="let stage of selectedProject.stages; index as j">
+          <div class="showcase">
+            <div cdkDropList [cdkDropListData]="stage.tasks"
+                 class="nes-container with-title text-center"
+                 (cdkDropListDropped)="drop($event)">
+              <h2 class="title">{{stage.name}}</h2>
+              <div class="row">
+                <div *ngFor="let task of stage.tasks; index as k"
+                     class="col-12 nes-btn{{getButtonState(j,stage,task)}}"
+                     cdkDrag (click)="editTask(j,k,task)">
+                  <div class="col-12 nes-btn is-disabled" *cdkDragPlaceholder></div>
+                  {{task.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
