@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "poc": {
+    "day2day": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/poc",
+            "outputPath": "dist/day2day",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "poc:build"
+            "browserTarget": "day2day:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "poc:build:production"
+              "browserTarget": "day2day:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "poc:build"
+            "browserTarget": "day2day:build"
           }
         },
         "test": {
@@ -109,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "poc:serve"
+            "devServerTarget": "day2day:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "poc:serve:production"
+              "devServerTarget": "day2day:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "poc"
+  "defaultProject": "day2day"
 }
